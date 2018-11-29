@@ -2,9 +2,12 @@
 /*
 描述：LED每隔一秒交替亮灭一次
 */
-int ledPin = 10;
-void setup() {
+int ledPin = 7;
+int main() {
 pinMode(ledPin, OUTPUT);
+while(1){
+  loop();
+}
 }
 void loop() {
 digitalWrite(ledPin,HIGH);
