@@ -24,11 +24,6 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  if(shine){
-    my_delay(200);
-    digitalWrite(SIGNAL_LED,LOW);
-    shine = false;
-  }
   if(mode > 0){
     switch(mode){
      case 1:cmd1();break;
@@ -36,17 +31,23 @@ void loop() {
      case 3:cmd3();break;
       default:mode = 0;
     }
-    if(done){done = false;interrupt = false;}
   }else
   {
     mode = 0;
     for(int i = 0;i<4;i++)digitalWrite(LED[i],LOW);
     my_delay(1000);
   }
+  if(done){done = false;interrupt = false;}
+  if(shine){
+    for(int i = 0;i<4;i++)digitalWrite(LED[i],LOW);
+    digitalWrite(SIGNAL_LED,HIGH);
+    delay(100);
+    digitalWrite(SIGNAL_LED,LOW);
+    shine = false;
+  }
 }
 
 void set(){
-  for(int i = 0;i<4;i++)digitalWrite(LED[i],LOW);
   int new_mode = 0;
   for(int i = 1; i<=3; i++){
     int state = HIGH;
@@ -61,7 +62,6 @@ void set(){
   }
   interrupt = true;
   done = false;
-  digitalWrite(SIGNAL_LED,HIGH);
   shine = true;
 }
 
