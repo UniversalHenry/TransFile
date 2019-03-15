@@ -203,7 +203,7 @@ void hw3(){
 
 void hw4(){
 	float a,l,t0,t,dt,x0,y0,x,y;
-	printf("The function is:\nx = a*(t-sin(t))\ny = a(1-cos(t))\n");
+	printf("The function is:\nx = a*(t-sin(t))\ny = a*(1-cos(t))\n");
 	printf("Please input the constant a in the function:\n");
 	a=0;
 	while(a<=0){
@@ -217,13 +217,16 @@ void hw4(){
 			scanf("%f",&l);
 		}
 	}
+	else{
+		l=30*a;
+	}
 	xmin=-l/2;
 	ymin=-0.2;
 	xmax=l/2;
 	ymax=2*a+0.2;
 	myopengraph(4);
 	printf("FUNCTION:\n");
-	printf("x = a*(t-sin(t))\ny = a(1-cos(t))\n");
+	printf("x = a*(t-sin(t))\ny = a*(1-cos(t))\n");
 	printf("a=%.2f",a);
 	x0=0;
 	y0=0;
