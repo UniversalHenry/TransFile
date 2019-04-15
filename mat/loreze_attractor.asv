@@ -1,0 +1,22 @@
+close all;clear;clc;
+
+dt = 0.02;
+tspan = [0 200];
+y0 = [1,1,1]';
+sigma = 16;
+r = 45.92;
+b = 4;
+[t,y] = ode45(@(t,x)func(x,sigma,r,b),tspan,y0);
+plot(t,y(:,1),t,y(:,2))
+title('Solution of van der Pol Equation (\mu = 1) with ODE45');
+xlabel('Time t');
+ylabel('Solution y');
+legend('y_1','y_2')
+
+
+function dx = func(x,sigma,r,b)
+dx = zeros(size(x));
+dx(1) = sigma*(x(2) - x(1));
+dx(2) = -x(1).*x(3) + r*x(1) - x(2);
+dx(3) = x(1).*x(2) - b * x(3);
+end
